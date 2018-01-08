@@ -30,5 +30,16 @@ namespace GillBobWedding.Tests
 
             Assert.IsTrue(paths.Length > 0);
         }
+
+        [TestMethod]
+        public void LinqTakeTest()
+        {
+            var arr = new List<int> { 1, 2, 3, 4, 5 };
+            var arr1 = new List<int> { 1, 2, 3 };
+
+            var shortened = arr.Take(3);
+
+            Assert.AreEqual(shortened.Sum(), arr1.Sum());
+        }
     }
 }

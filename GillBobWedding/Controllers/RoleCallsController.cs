@@ -33,7 +33,7 @@ namespace GillBobWedding.Controllers
             {
                 await roleCall.WriteCsv(path, roleCall.ToString());
               
-                return View(roleCall); // fix
+                return Redirect("RsvpSuccess");
             }
             return Redirect("Error");
         }

@@ -6,35 +6,24 @@
 }
 
 
-
 <h1>Photo Gallery</h1>
 
-<div>
-    <table>
+<div class="row">
 
-        @foreach (var item in Model)
+    @foreach (var item in Model)
+    {
+    <div class="column">
+
+        @foreach(var path in item)
         {
-            <tr>
-                @foreach (var path in item)
-                {
-                <td style="padding:7px">
+        <a href=@Html.Raw(path) class="link">
 
-                    <a href=@Html.Raw(path) class="link">
+            <img src=@Html.Raw(path) alt="Uploaded Photo" style="width:100%" />
+        </a>
 
-                        <img src=@Html.Raw(path) alt="Uploaded Photo" style="width:100%" />
-                    </a>
-                </td>
-                }
-            </tr>
         }
-    </table>
-</div>
-
-<script>
-    function openImage(url) {
-        window.open(url);
+    </div>
     }
-</script>
-
+</div>
 
 

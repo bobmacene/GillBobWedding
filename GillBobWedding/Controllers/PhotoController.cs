@@ -28,27 +28,35 @@ namespace GillBobWedding.Controllers
 
             var groupedPaths = new List<IEnumerable<string>>();
 
-            var remainders = 0;
+            var remainder = imgPaths.Count() % 4;
 
-            for(var v = 0; v < imgPaths.Count; v+=4)
+            var count = imgPaths.Count() - remainder;
+
+            var evenImgPaths = imgPaths.Take(count);
+
+            var remainderPaths = imgPaths.GetRange(count - 1, remainder);
+
+            for(var v = 0; v < evenImgPaths.Count(); v+=4)
             {
-                if (imgPaths.Count - v < 4)
-                {
-                    remainders = imgPaths.Count - v;
-                    break;
-                }
                 groupedPaths.Add(new[] { imgPaths[v], imgPaths[v + 1], imgPaths[v + 2], imgPaths[v + 3] });
             }
 
-            var remainingPaths = new List<string>();
- 
+            var countPaths = 0;
 
-            for(var v = remainders; v > 0; v--)
+            for(var v = 0; v < 4; v++)
             {
-                remainingPaths.Add(imgPaths[imgPaths.Count - v]);
+                for(var w = 0; w < evenImgPaths.Count() / 4; w++)
+                {
+                    groupedPaths[v].Append(evenImgPaths.ElementAt(countPaths++));
+                }
             }
 
-            groupedPaths.Add(remainingPaths.ToArray());
+            var remainderPathCount = 0;
+
+            foreach(var path in remainderPaths)
+            {
+                groupedPaths[remainderPathCount].Append(remainderPaths.ElementAt(remainderPathCount));
+            }
 
             return View(groupedPaths.ToList());
         }

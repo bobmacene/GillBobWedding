@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "RSVP";
+}
+
+<h2>RSVP</h2>
+
+
+
+<div>
+    <form method="post" enctype="multipart/form-data" asp-controller="RecordRsvp" asp-action="Index" >
+        <div class="form-group">
+            <div class="col-md-10">
+                <h4 style="color:red">Add RSVP details here:</h4>
+                Attendee Name: <br />
+                <input type="text" name="Name" /><br />
+                Attendee +1 Name (leave blank if n/a):<br />
+                <input type="text" name="PlusOneName" /><br />
+                <br />
+                Select if you are attending:
+                <input type="radio" name="RSVP" value="Attending" /><br />
+                select if you are NOT attending:
+                <input type="radio" name="RSVP" value="NotAttending" /><br />
+                <br />
+
+                If you want to stay in the Dylan on 23rd March, please let us know below?<br />
+                <input type="text" name="Accommodation" style="width:600px" /><br />
+                <br />
+
+                Comments/details we need to know of (if any):<br />
+                <input type="text" name="Comment" style="width:600px" /><br />
+                <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Submit"  />
+            </div>
+        </div>
+    </form>
+</div>

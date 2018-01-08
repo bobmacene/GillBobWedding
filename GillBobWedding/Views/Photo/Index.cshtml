@@ -1,0 +1,40 @@
+﻿
+@model IList<IEnumerable<string>>
+
+@{
+    ViewData["Title"] = "Photos";
+}
+
+
+
+<h1>Photo Gallery</h1>
+
+<div>
+    <table>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @foreach (var path in item)
+                {
+                <td style="padding:7px">
+
+                    <a href=@Html.Raw(path) class="link">
+
+                        <img src=@Html.Raw(path) alt="Uploaded Photo" style="width:100%" />
+                    </a>
+                </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+
+<script>
+    function openImage(url) {
+        window.open(url);
+    }
+</script>
+
+
+

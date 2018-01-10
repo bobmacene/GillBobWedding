@@ -1,17 +1,15 @@
-﻿table, th, td{
-    border-spacing: 20px;
-    padding: 20px;
+﻿#divView {
+    /*background-color: #f7e6f7;*/
+  
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
 }
 
-/*div {
-    background-color: #f7d9f5
-}*/
-
-td{
-    padding-right: 4em;
-}
 
 body {
+    background-image: url(../images/jillBobSpainLarge.jpg);
+    /*background-color: #f7e6f7;*/
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -23,21 +21,18 @@ body {
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
+/*/* Carousel */
+/*.carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
-}
+}*/
 
 /* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+/*.carousel-inner .item img[src$=".svg"] {
     width: 100%;
-}
+}*/
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
+
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
@@ -47,13 +42,10 @@ body {
     }
 }
 
-* {
-    box-sizing: border-box;
-}
 
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: Segoe UI;
 }
 
 .header {
@@ -99,3 +91,5 @@ body {
         max-width: 100%;
     }
 }
+
+

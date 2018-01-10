@@ -1,27 +1,35 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
 
 
+<div style="float:right;background-color:white;">
+    <h3> &nbsp&nbsp 23rd March 2018 - 8pm  &nbsp&nbsp</h3>
+    <p> &nbsp&nbsp&nbsp Countdown: &nbsp <text id="countdown">  </text></p>
+    <br />
+</div>
+
+
 <div>
-    <h3>Invitation</h3>
+    <h3 style="font-style:italic">Invitation</h3>
     You are cordially invited to the afters of Bob & Gill's wedding on 23rd March 2018 at the @Html.ActionLink("Dylan Hotel", "Location", "Home") in Ballsbridge from 8pm. This site is your invitation, NO invites will be sent by post.
 </div>
 
 <div>
-    <h3>Why only the afters?</h3>
-    We are not having a traditional Irish wedding. We are having a small Humanist ceremony in City Hall with our immediate family, and the same for the reception in the Dylan. 
+    <h3 style="font-style:italic">Why only the afters?</h3>
+    We are not having a traditional Irish wedding. We are having a small Humanist ceremony in City Hall with our immediate family, and the same for the reception in the Dylan.
     Everyone else will be attending the afters.
 </div>
 
 <div>
-    <h3>Plus Ones</h3>
+    <h3 style="font-style:italic">Plus Ones</h3>
     Everyone invited to the Dylan may bring a plus one/partner.
 </div>
 
 <div>
-    <h3>RSVP</h3>
+    <h3 style="font-style:italic">RSVP</h3>
     You can RSVP in three ways:<br />
     1. Go to the @Html.ActionLink("RSVP page", "Index", "RoleCalls") and input your details.<br />
     2. Send an email to bobgillwedding@gmail.com with attendee details.<br />
@@ -29,27 +37,60 @@
 </div>
 
 <div>
-    <h3>Dress Code</h3>
+    <h3 style="font-style:italic">Dress Code</h3>
     TBD - Smart Casual?
 </div>
 <div>
-    <h3>Presents</h3>
-    As you are not being invited to the reception dinner we are not expecting presents from anyone attending the afters. 
-    As our lives have developed, we have become geographically dispersed and a lot of you have kids. 
-    As a result, we don't get to meet up as often as we used to. 
-    This is a great opportunity for us to come together and enjoy ourselves like we did in the good old days. 
+    <h3 style="font-style:italic">Presents</h3>
+    As you are not being invited to the reception dinner we are not expecting presents from anyone attending the afters.
+    As our lives have developed, we have become geographically dispersed and a lot of us have kids.
+    As a result, we don't get to meet up as often as we used to.
+    This is a great opportunity for us to come together and enjoy ourselves like we did in the good old days.
     Therefore, the best present you can give us, is to turn up on the night with a big smile on your face and enjoy yourself.
 </div>
 
 <div>
-    <h3>Social Media</h3>
-    Please do NOT post anything to social media while attending the wedding. 
-    However, please take as many photos as you like and upload them to the Photo Gallery section of this website. Photos can be uploaded here: @Html.ActionLink("Photo Upload Section", "Upload", "Photo") 
+    <h3 style="font-style:italic">Social Media</h3>
+    Please do NOT post anything to social media while attending the wedding.
+    However, please take as many photos as you like and upload them to the Photo Gallery section of this website. Photos can be uploaded here: @Html.ActionLink("Photo Upload", "Upload", "Photo")
 </div>
 
 <div>
-    <h3>Accommodation</h3>
-    There are a few rooms avaiable in the Dylan with a wedding rate (€230) for the 23rd of March. 
-    If people are interested, they can contact the Dylan Hotel to book a room at the wedding rate. 
-    you should act fast if you want this wedding deal.  
+    <h3 style="font-style:italic">Accommodation</h3>
+    There are a few rooms avaiable in the Dylan with a wedding rate (€230) for the 23rd of March.
+    If people are interested, they can contact the Dylan Hotel to book a room at the wedding rate.
+    You should act fast if you want this wedding deal.
 </div>
+
+
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Mar 23, 2018 20:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>

@@ -17,25 +17,39 @@ namespace GillBobWedding.Controllers
             return View();
         }
 
+        public IActionResult RsvpError()
+        {
+            return View();
+        }
+
+        public IActionResult RsvpSuccess()
+        {
+            return View();
+        }
+
         // POST: RoleCalls/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost("RecordRsvp")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Post(
-            [Bind("Name,PlusOneName,RSVP,Accommodation,Comment")] RoleCall roleCall)
+            [Bind("Name,PlusOneName,RSVP,Comment")] RoleCall roleCall)
         {
             var rollCall = new RoleCall();
 
             var path = "../GillBobWedding/wwwroot/RSVP.csv";
-            
-            if (ModelState.IsValid)
+
+
+            var correctEntries = roleCall.Name != string.Empty || roleCall.Name != null;
+            if(correctEntries) correctEntries = roleCall.RSVP != RSVP.NotResponded;
+
+            if (correctEntries)
             {
                 await roleCall.WriteCsv(path, roleCall.ToString());
               
-                return Redirect("RsvpSuccess");
+                return RedirectToAction("RsvpSuccess", "RoleCalls");
             }
-            return Redirect("Error");
+            return RedirectToAction("RsvpError", "RoleCalls");
         }
 
         
